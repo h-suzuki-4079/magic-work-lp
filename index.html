@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>宇都宮市の不用品・粗大ごみ回収｜マジック・ワーク</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1A3A5C;
+    --navy-dark: #112846;
+    --navy-light: #2A5080;
+    --line-green: #06C755;
+    --line-green-dark: #05A648;
+    --off-white: #F5F6F8;
+    --white: #FFFFFF;
+    --text: #1A1A1A;
+    --muted: #666666;
+    --border: #E0E4EA;
+    --accent-bg: #EBF8F0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: var(--text);
+    background: var(--white);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== ヒーロー ===== */
+  .hero {
+    background: var(--navy);
+    color: var(--white);
+    padding: 56px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(6,199,85,0.2);
+    color: #7EFFC0;
+    border: 1px solid rgba(6,199,85,0.4);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: 26px;
+    font-weight: 900;
+    line-height: 1.45;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: #7EFFC0;
+  }
+  .hero-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 32px;
+    line-height: 1.7;
+  }
+  .btn-line {
+    display: block;
+    background: var(--line-green);
+    color: var(--white);
+    font-size: 17px;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 18px 24px;
+    border-radius: 12px;
+    text-align: center;
+    transition: background 0.2s;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(6,199,85,0.35);
+  }
+  .btn-line:hover { background: var(--line-green-dark); }
+  .btn-line span {
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 0.85;
+    margin-top: 3px;
+  }
+  .hero-tel {
+    margin-top: 20px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+  }
+  .hero-tel a {
+    color: rgba(255,255,255,0.85);
+    font-weight: 700;
+    font-size: 18px;
+    text-decoration: none;
+    display: block;
+    margin-top: 4px;
+  }
+
+  /* ===== セクション共通 ===== */
+  section { padding: 56px 24px; }
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--line-green-dark);
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  h2 {
+    font-size: 22px;
+    font-weight: 900;
+    line-height: 1.4;
+    color: var(--navy);
+    margin-bottom: 32px;
+  }
+  h2 .accent { color: var(--line-green-dark); }
+
+  /* ===== お悩みセクション ===== */
+  .concerns { background: var(--off-white); }
+  .concern-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .concern-item {
+    background: var(--white);
+    border-left: 4px solid var(--navy);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 18px;
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .concern-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .concern-item p { margin: 0; line-height: 1.5; }
+  .concern-item small {
+    display: block;
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 400;
+    margin-top: 3px;
+  }
+  .concern-bridge {
+    margin-top: 28px;
+    background: var(--navy);
+    color: var(--white);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.6;
+  }
+  .concern-bridge em {
+    font-style: normal;
+    color: #7EFFC0;
+  }
+
+  /* ===== 強みセクション ===== */
+  .features { background: var(--white); }
+  .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .feature-card {
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 16px;
+    text-align: center;
+  }
+  .feature-icon {
+    font-size: 32px;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .feature-card h3 {
+    font-size: 13px;
+    font-weight: 900;
+    color: var(--navy);
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+  .feature-card p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .feature-card.highlight {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: var(--white);
+  }
+  .feature-card.highlight h3 { color: #7EFFC0; }
+  .feature-card.highlight p { color: rgba(255,255,255,0.7); }
+
+  /* ===== 利用の流れ ===== */
+  .flow { background: var(--accent-bg); }
+  .flow-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .flow-step {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    position: relative;
+  }
+  .flow-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 22px;
+    top: 52px;
+    width: 2px;
+    height: calc(100% - 8px);
+    background: var(--line-green);
+    opacity: 0.4;
+  }
+  .step-num {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--line-green);
+    color: var(--white);
+    font-weight: 900;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-body {
+    padding-bottom: 36px;
+    padding-top: 8px;
+  }
+  .flow-step:last-child .step-body { padding-bottom: 0; }
+  .step-body h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .step-body p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ===== 料金 ===== */
+  .price { background: var(--white); }
+  .price-note {
+    background: var(--off-white);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .price-note strong {
+    display: block;
+    color: var(--navy);
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .price-examples {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+  }
+  .price-row .item { font-weight: 500; }
+  .price-row .amount {
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .price-disclaimer {
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  /* ===== 信頼 ===== */
+  .trust { background: var(--navy); color: var(--white); }
+  .trust h2 { color: var(--white); }
+  .trust h2 .accent { color: #7EFFC0; }
+  .trust-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .stat-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
+    padding: 18px 14px;
+    text-align: center;
+  }
+  .stat-num {
+    font-size: 32px;
+    font-weight: 900;
+    color: #7EFFC0;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.4;
+  }
+  .trust-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .trust-badge {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
+
+  /* ===== 対応エリア ===== */
+  .area { background: var(--off-white); }
+  .area-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .area-tag {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--navy);
+  }
+  .area-tag.primary {
+    background: var(--navy);
+    color: var(--white);
+    border-color: var(--navy);
+  }
+  .area-note {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 12px;
+  }
+
+  /* ===== 最終CTA ===== */
+  .final-cta {
+    background: var(--white);
+    text-align: center;
+    padding: 56px 24px 80px;
+  }
+  .final-cta h2 {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .final-cta .lead {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 28px;
+    line-height: 1.7;
+  }
+  .tel-block {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  .tel-block p {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .tel-block a {
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--navy);
+    text-decoration: none;
+  }
+  .tel-block small {
+    display: block;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* ===== フッター ===== */
+  footer {
+    background: var(--navy-dark);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+  }
+
+  /* ===== スティッキーCTA ===== */
+  .sticky-cta {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    padding: 12px 20px 20px;
+    z-index: 100;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  }
+  .sticky-cta .btn-line {
+    font-size: 16px;
+    padding: 15px 20px;
+  }
+
+  /* ===== デスクトップ対応 ===== */
+  @media (min-width: 640px) {
+    .hero { padding: 80px 40px 64px; }
+    .hero h1 { font-size: 32px; }
+    section { padding: 72px 40px; }
+    h2 { font-size: 26px; }
+    .feature-grid { grid-template-columns: repeat(4,1fr); }
+    .trust-stats { grid-template-columns: repeat(4,1fr); }
+    .inner { max-width: 640px; margin: 0 auto; }
+    .sticky-cta .inner { max-width: 480px; }
+    .price-examples { flex-direction: row; flex-wrap: wrap; }
+    .price-row { flex: 1 1 200px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <div class="inner">
+    <p class="hero-badge">宇都宮市・上三川町の許可業者</p>
+    <h1>片付けたい家具や不用品、<br><em>そのままになっていませんか？</em></h1>
+    <p class="hero-sub">家具・家電1点から、家一軒分まで。<br>分別・搬出が難しいお片付けも<br>丁寧にサポートします。</p>
+    <a href="https://s.lmes.jp/landing-qr/2007308532-WMoZDb0l?uLand=nbDYgI" class="btn-line">
+      LINEで写真を送るだけ
+      <span>↗ 無料でお見積もり（24時間受付）</span>
+    </a>
+    <div class="hero-tel">
+      お電話でのご相談はこちら
+      <a href="tel:0286568244">028-656-8244</a>
+    </div>
+  </div>
+</section>
+
+<!-- お悩み -->
+<section class="concerns">
+  <div class="inner">
+    <p class="section-label">こんなお悩みはありませんか</p>
+    <h2>片付けたいけど、<br><span class="accent">一人では難しい…</span></h2>
+    <div class="concern-list">
+      <div class="concern-item">
+        <span class="concern-icon">🛋️</span>
+        <p>重くて一人では運び出せない
+          <small>大きなソファ・タンス・冷蔵庫など</small>
+        </p>
+      </div>
+      <div class="concern-item">
+        <span class="concern-icon">📦</span>
+        <p>何をどこに捨てたらいいかわからない
+          <small>分別ルールが複雑で手間がかかる</small>
+        </p>
+      </div>
+      <div class="concern-item">
+        <span class="concern-icon">💰</span>
+        <p>費用がいくらかかるか不安
+          <small>見積もりを頼むのも気が引けてしまう</small>
+        </p>
+      </div>
+      <div class="concern-item">
+        <span class="concern-icon">🏠</span>
+        <p>実家の片付けや遺品整理を任された
+          <small>どこから手をつければいいかわからない</small>
+        </p>
+      </div>
+    </div>
+    <div class="concern-bridge">
+      そのお悩み、<br><em>マジック・ワークにお任せください。</em><br>LINEで写真を送るだけで<em>無料でお見積もり</em>します。
+    </div>
+  </div>
+</section>
+
+<!-- 強み -->
+<section class="features">
+  <div class="inner">
+    <p class="section-label">マジック・ワークが選ばれる理由</p>
+    <h2>地域密着<span class="accent">25年</span>の<br>安心・確実なサービス</h2>
+    <div class="feature-grid">
+      <div class="feature-card highlight">
+        <span class="feature-icon">✅</span>
+        <h3>市町村の<br>許可業者</h3>
+        <p>無許可の悪質業者とは違い、安心・確実に処分できます</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📦</span>
+        <h3>1点から<br>OK</h3>
+        <p>家具・家電1点から、家一軒分の大量回収まで対応</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">⚡</span>
+        <h3>即日対応<br>可能</h3>
+        <p>急なお引越しや急ぎのご依頼にも柔軟に対応します</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📱</span>
+        <h3>PayPay<br>対応</h3>
+        <p>現金不要。電子決済でスムーズにお支払いいただけます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 利用の流れ -->
+<section class="flow">
+  <div class="inner">
+    <p class="section-label">ご利用の流れ</p>
+    <h2>LINEで写真を送るだけ。<br><span class="accent">3ステップで完了。</span></h2>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>LINEで写真を送る</h3>
+          <p>処分したい品物の写真をLINEで送るだけ。難しい説明は不要です。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>無料でお見積もり</h3>
+          <p>写真をもとにスタッフが確認し、料金をご案内します。追加料金は一切ありません。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>日程調整・回収完了</h3>
+          <p>ご都合のよい日時にお伺いし、丁寧に回収します。分別もスタッフにお任せください。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 料金 -->
+<section class="price">
+  <div class="inner">
+    <p class="section-label">料金について</p>
+    <h2>品目・量で変わります。<br>まず<span class="accent">無料でご確認</span>ください。</h2>
+    <div class="price-note">
+      <strong>料金の目安</strong>
+      品目の種類・数量・搬出の難易度によって料金が変わります。まずはLINEで写真をお送りください。その場で概算をお伝えします。
+    </div>
+    <div class="price-examples">
+      <div class="price-row">
+        <span class="item">🛋️ ソファ（1人掛け）</span>
+        <span class="amount">¥3,000〜</span>
+      </div>
+      <div class="price-row">
+        <span class="item">📺 テレビ・家電類</span>
+        <span class="amount">¥2,000〜</span>
+      </div>
+      <div class="price-row">
+        <span class="item">🚪 タンス・大型家具</span>
+        <span class="amount">¥5,000〜</span>
+      </div>
+      <div class="price-row">
+        <span class="item">🏠 部屋まるごと</span>
+        <span class="amount">要お見積もり</span>
+      </div>
+    </div>
+    <p class="price-disclaimer">※上記はあくまでも目安です。実際の料金はご状況により異なります。</p>
+    <a href="https://s.lmes.jp/landing-qr/2007308532-WMoZDb0l?uLand=nbDYgI" class="btn-line">
+      LINEで無料お見積もり
+      <span>↗ 写真を送るだけ・24時間受付</span>
+    </a>
+  </div>
+</section>
+
+<!-- 信頼・実績 -->
+<section class="trust">
+  <div class="inner">
+    <p class="section-label" style="color:#7EFFC0;">実績・信頼</p>
+    <h2>栃木県で<span class="accent">25年</span>。<br>地域に根付いたサービス体制</h2>
+    <div class="trust-stats">
+      <div class="stat-card">
+        <div class="stat-num">25<small style="font-size:16px;font-weight:700;">年</small></div>
+        <div class="stat-label">地域密着の<br>実績</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">10<small style="font-size:16px;font-weight:700;">台</small></div>
+        <div class="stat-label">パッカー車<br>保有台数</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">9<small style="font-size:16px;font-weight:700;">市町</small></div>
+        <div class="stat-label">一般廃棄物<br>許可エリア</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">即日</div>
+        <div class="stat-label">対応可能な<br>体制</div>
+      </div>
+    </div>
+    <div class="trust-badges">
+      <span class="trust-badge">✅ 市町村の許可業者</span>
+      <span class="trust-badge">♻️ 遺品整理士在籍</span>
+      <span class="trust-badge">🌱 SDGs取り組み事業者</span>
+      <span class="trust-badge">📱 PayPay対応</span>
+      <span class="trust-badge">🔧 第一種フロン類回収登録</span>
+      <span class="trust-badge">🌍 SBT認定</span>
+    </div>
+  </div>
+</section>
+
+<!-- 対応エリア -->
+<section class="area">
+  <div class="inner">
+    <p class="section-label">対応エリア</p>
+    <h2>栃木県内<span class="accent">9市町</span>で<br>許可を取得しています</h2>
+    <div class="area-grid">
+      <span class="area-tag primary">宇都宮市</span>
+      <span class="area-tag primary">上三川町</span>
+      <span class="area-tag">さくら市</span>
+      <span class="area-tag">真岡市</span>
+      <span class="area-tag">小山市</span>
+      <span class="area-tag">下野市</span>
+      <span class="area-tag">益子町</span>
+      <span class="area-tag">芳賀町</span>
+      <span class="area-tag">市貝町</span>
+    </div>
+    <p class="area-note">※上記以外のエリアについてもお気軽にご相談ください。</p>
+  </div>
+</section>
+
+<!-- 最終CTA -->
+<section class="final-cta">
+  <div class="inner">
+    <p class="section-label" style="text-align:center;">まずは気軽にご相談を</p>
+    <h2>写真を送るだけで<br><span class="accent">無料でお見積もり</span></h2>
+    <p class="lead">「いくらかかるか不安…」そのままでOKです。<br>LINEで写真を送っていただければ、<br>スタッフが丁寧にご案内します。</p>
+    <a href="https://s.lmes.jp/landing-qr/2007308532-WMoZDb0l?uLand=nbDYgI" class="btn-line">
+      LINEで無料お見積もりを依頼する
+      <span>↗ 24時間受付・返信は営業時間内</span>
+    </a>
+    <div class="tel-block">
+      <p>お電話でのご相談</p>
+      <a href="tel:0286568244">028-656-8244</a>
+      <small>受付時間：平日 9:00〜17:00</small>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>株式会社マジック・ワーク</p>
+  <p style="margin-top:4px;">〒321-0921 栃木県宇都宮市瑞穂3-9-16</p>
+  <p style="margin-top:8px; font-size:11px;">© 2026 Magic Work Co., Ltd. All Rights Reserved.</p>
+</footer>
+
+<!-- スティッキーCTA（スクロール後に表示） -->
+<div class="sticky-cta" id="stickyCta" style="display:none;">
+  <div class="inner">
+    <a href="https://s.lmes.jp/landing-qr/2007308532-WMoZDb0l?uLand=nbDYgI" class="btn-line">
+      LINEで無料お見積もり
+      <span>↗ 写真を送るだけ・24時間受付</span>
+    </a>
+  </div>
+</div>
+
+<script>
+  const stickyCta = document.getElementById('stickyCta');
+  const hero = document.querySelector('.hero');
+  function checkScroll() {
+    const heroBottom = hero.getBoundingClientRect().bottom;
+    stickyCta.style.display = heroBottom < 0 ? 'block' : 'none';
+  }
+  window.addEventListener('scroll', checkScroll, { passive: true });
+</script>
+
+</body>
+</html>
