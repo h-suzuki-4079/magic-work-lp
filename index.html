@@ -32,61 +32,60 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ===== ヒーロー ===== */
+  /* ===== ヒーロー（B案：広告マンガの続き。毎月「画像」と「見出し」を差し替え） ===== */
   .hero {
-    background: var(--navy);
-    color: var(--white);
-    padding: 56px 24px 48px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+    background: #F4F8FC;
+    color: var(--navy);
+    padding: 16px 16px 36px;
   }
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -60px; right: -60px;
-    width: 260px; height: 260px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.04);
-    pointer-events: none;
+  .hero-badges {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
   }
-  .hero::after {
-    content: '';
-    position: absolute;
-    bottom: -80px; left: -40px;
-    width: 200px; height: 200px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.03);
-    pointer-events: none;
-  }
-  .hero-badge {
-    display: inline-block;
-    background: rgba(6,199,85,0.2);
-    color: #7EFFC0;
-    border: 1px solid rgba(6,199,85,0.4);
+  .hero-badges span {
     font-size: 12px;
     font-weight: 700;
-    letter-spacing: 0.08em;
-    padding: 4px 14px;
-    border-radius: 20px;
-    margin-bottom: 20px;
+    color: var(--navy);
+    background: var(--white);
+    border: 1px solid #C9D7E6;
+    border-radius: 999px;
+    padding: 4px 12px;
+  }
+  .hero-manga {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 2px solid var(--navy);
+    background: var(--white);
+  }
+  .hero-text { padding: 22px 4px 0; }
+  .hero-lead {
+    font-size: 14px;
+    font-weight: 700;
+    color: #2B6CB0;
+    margin-bottom: 8px;
   }
   .hero h1 {
     font-size: 26px;
     font-weight: 900;
     line-height: 1.45;
-    margin-bottom: 16px;
-    letter-spacing: -0.01em;
-  }
-  .hero h1 em {
-    font-style: normal;
-    color: #7EFFC0;
+    color: var(--navy);
+    margin-bottom: 12px;
   }
   .hero-sub {
     font-size: 15px;
-    color: rgba(255,255,255,0.75);
-    margin-bottom: 32px;
-    line-height: 1.7;
+    color: #3A4656;
+    line-height: 1.75;
+    margin-bottom: 22px;
+  }
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
   .btn-line {
     display: block;
@@ -110,18 +109,35 @@
     opacity: 0.85;
     margin-top: 3px;
   }
-  .hero-tel {
-    margin-top: 20px;
-    font-size: 13px;
-    color: rgba(255,255,255,0.6);
-  }
-  .hero-tel a {
-    color: rgba(255,255,255,0.85);
-    font-weight: 700;
-    font-size: 18px;
-    text-decoration: none;
+  .btn-tel {
     display: block;
-    margin-top: 4px;
+    background: var(--navy);
+    color: var(--white);
+    font-size: 17px;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 16px 24px;
+    border-radius: 12px;
+    text-align: center;
+  }
+  .btn-tel span {
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    opacity: 0.9;
+    margin-top: 3px;
+  }
+  @media (min-width: 768px) {
+    .hero { padding: 40px 24px 56px; }
+    .hero .inner {
+      max-width: 1000px;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      column-gap: 40px;
+      align-items: center;
+    }
+    .hero-badges { grid-column: 1 / -1; }
+    .hero-text { padding: 0; }
   }
 
   /* ===== セクション共通 ===== */
@@ -464,8 +480,8 @@
 
   /* ===== デスクトップ対応 ===== */
   @media (min-width: 640px) {
-    .hero { padding: 80px 40px 64px; }
-    .hero h1 { font-size: 32px; }
+    .hero { padding: 32px 40px 56px; }
+    .hero h1 { font-size: 30px; }
     section { padding: 72px 40px; }
     h2 { font-size: 26px; }
     .feature-grid { grid-template-columns: repeat(4,1fr); }
@@ -479,19 +495,28 @@
 </head>
 <body>
 
-<!-- ヒーロー -->
+<!-- ヒーロー（B案：広告マンガの続き） -->
 <section class="hero">
   <div class="inner">
-    <p class="hero-badge">宇都宮市・上三川町の許可業者</p>
-    <h1>片付けたい家具や不用品、<br><em>そのままになっていませんか？</em></h1>
-    <p class="hero-sub">家具・家電1点から、家一軒分まで。<br>分別・搬出が難しいお片付けも<br>丁寧にサポートします。</p>
-    <a href="https://s.lmes.jp/landing-qr/2007308532-WMoZDb0l?uLand=nbDYgI" class="btn-line">
-      LINEで無料相談する
-      <span>↗ 相談だけでもOKです</span>
-    </a>
-    <div class="hero-tel">
-      お電話でのご相談はこちら
-      <a href="tel:0286568244">028-656-8244</a>
+    <div class="hero-badges">
+      <span>宇都宮市許可 第146号</span>
+      <span>地域密着25年</span>
+    </div>
+    <img class="hero-manga" src="images/hero-202611.jpg" width="1080" height="771" alt="作業着の社長が親指を立てて「お任せください！」「一緒にスッキリさせましょう！」と話すマンガのコマ">
+    <div class="hero-text">
+      <p class="hero-lead">年内の引越し、片付けは間に合う？</p>
+      <h1>困ったときの<br>マジック・ワークです。</h1>
+      <p class="hero-sub">家具・家電1点から、家一軒分まで。<br>他社さんと比べていただいても大丈夫です。</p>
+      <div class="hero-actions">
+        <a href="https://s.lmes.jp/landing-qr/2007308532-WMoZDb0l?uLand=nbDYgI" class="btn-line">
+          LINEで無料相談する
+          <span>相談だけでもOKです</span>
+        </a>
+        <a href="tel:0286568244" class="btn-tel">
+          電話で相談する
+          <span>028-656-8244</span>
+        </a>
+      </div>
     </div>
   </div>
 </section>
